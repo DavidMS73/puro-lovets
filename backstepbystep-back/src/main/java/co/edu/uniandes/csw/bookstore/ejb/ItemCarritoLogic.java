@@ -26,7 +26,7 @@ public class ItemCarritoLogic {
     @Inject
     private BookPersistence bookPersistence;
 
-    public ItemCarritoEntity createCompra(ItemCarritoEntity compraEntity) throws BusinessLogicException {
+    public ItemCarritoEntity createItem(ItemCarritoEntity compraEntity) throws BusinessLogicException {
         if (compraEntity.getBook() == null || bookPersistence.find(compraEntity.getBook().getId()) == null) {
             throw new BusinessLogicException("El libro es inválido");
         }
@@ -37,12 +37,12 @@ public class ItemCarritoLogic {
         return compraEntity;
     }
 
-    public List<ItemCarritoEntity> getCompras() {
+    public List<ItemCarritoEntity> getItems() {
         List<ItemCarritoEntity> compras = persistence.findAll();
         return compras;
     }
 
-    public ItemCarritoEntity getCompra(Long booksId) {
+    public ItemCarritoEntity getItem(Long booksId) {
         ItemCarritoEntity compraEntity = persistence.find(booksId);
         return compraEntity;
     }
