@@ -79,6 +79,19 @@ public class UsuarioResource {
         LOGGER.log(Level.INFO, "UsuarioResource getUsuario: output: {0}", detailDTO);
         return detailDTO;
     }
+    
+    @GET
+    @Path("{username: [a-zA-Z][a-zA-Z]*}")
+    public UsuarioDetailDTO getUsuarioUsername(@PathParam("username") String username) {
+        LOGGER.log(Level.INFO, "UsuarioResource getUsuarioUsername: input: {0}", username);
+        UsuarioEntity usuarioEntity = uLogic.getUsuarioUsername(username);
+        if (usuarioEntity == null) {
+            throw new WebApplicationException(msg1 + username + msg2, 404);
+        }
+        UsuarioDetailDTO detailDTO = new UsuarioDetailDTO(usuarioEntity);
+        LOGGER.log(Level.INFO, "UsuarioResource getUsuarioUsername: output: {0}", detailDTO);
+        return detailDTO;
+    }
 
     @Path("{usuariosId: \\d+}/compras")
     public Class<UsuarioComprasResource> getUsuarioComprasResource(@PathParam("usuariosId") Long usuariosId) {
