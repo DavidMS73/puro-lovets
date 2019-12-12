@@ -26,6 +26,7 @@ import javax.ws.rs.WebApplicationException;
 
 /**
  * Recuso de la clase Usuario
+ *
  * @author puro-lovets
  */
 @Path("usuarios")
@@ -33,10 +34,11 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @RequestScoped
 public class UsuarioResource {
+
     private static final Logger LOGGER = Logger.getLogger(UsuarioResource.class.getName());
     @Inject
     private UsuarioLogic uLogic;
-    
+
     /**
      * Parte del mensaje
      */
@@ -46,7 +48,7 @@ public class UsuarioResource {
      * Parte del mensaje
      */
     private String msg2 = " no existe.";
-    
+
     @POST
     public UsuarioDTO crearUsuario(UsuarioDTO usuario) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "UsuarioResource crearUsuario: input: {0}", usuario);
@@ -77,7 +79,15 @@ public class UsuarioResource {
         LOGGER.log(Level.INFO, "UsuarioResource getUsuario: output: {0}", detailDTO);
         return detailDTO;
     }
-    
+
+    @Path("{usuariosId: \\d+}/compras")
+    public Class<UsuarioComprasResource> getUsuarioComprasResource(@PathParam("usuariosId") Long usuariosId) {
+        if (uLogic.getUsuario(usuariosId) == null) {
+            throw new WebApplicationException("El recurso /usuarios/" + usuariosId + " no existe.", 404);
+        }
+        return UsuarioComprasResource.class;
+    }
+
     private List<UsuarioDetailDTO> listEntity2DTO(List<UsuarioEntity> entityList) {
         List<UsuarioDetailDTO> list = new ArrayList<>();
         for (UsuarioEntity entity : entityList) {

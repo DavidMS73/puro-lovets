@@ -6,7 +6,11 @@
 package co.edu.uniandes.csw.bookstore.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * Entidad usuario
@@ -28,6 +32,10 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
      * Atributo que modela el nick del usuario
      */
     private String username;
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "usuario")
+    private List<CompraEntity> compras = new ArrayList<>();
 
     /**
      * @return the nombre
@@ -79,5 +87,19 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
     @Override
     public int hashCode() {
         return super.hashCode();
+    }
+
+    /**
+     * @return the compras
+     */
+    public List<CompraEntity> getCompras() {
+        return compras;
+    }
+
+    /**
+     * @param compras the compras to set
+     */
+    public void setCompras(List<CompraEntity> compras) {
+        this.compras = compras;
     }
 }

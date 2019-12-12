@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.bookstore.ejb;
 import co.edu.uniandes.csw.bookstore.entities.CompraEntity;
 import co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.bookstore.persistence.CompraPersistence;
+import co.edu.uniandes.csw.bookstore.persistence.UsuarioPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,8 +27,14 @@ public class CompraLogic {
     @Inject
     private CompraPersistence persistence;
     
+    @Inject
+    private UsuarioPersistence usuarioPersistence;
+    
     public CompraEntity createCompra(CompraEntity compraEntity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de creación de la compra");
+        if (compraEntity.getUsuario() == null || usuarioPersistence.find(compraEntity.getUsuario().getId()) == null) {
+            throw new BusinessLogicException("La editorial es inválida");
+        }
         if (compraEntity.getEstado()== null) {
             throw new BusinessLogicException("La compra es inválida");
         }

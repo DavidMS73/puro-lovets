@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.bookstore.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * Entidad compra
@@ -19,6 +21,10 @@ public class CompraEntity extends BaseEntity implements Serializable{
      * Atributo que modela el estado de la compra
      */
     private Integer estado;
+    
+    @PodamExclude
+    @ManyToOne
+    private UsuarioEntity usuario;
     
     public CompraEntity() {
         //Constructor
@@ -46,5 +52,19 @@ public class CompraEntity extends BaseEntity implements Serializable{
     @Override
     public int hashCode() {
         return super.hashCode();
+    }
+
+    /**
+     * @return the usuario
+     */
+    public UsuarioEntity getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
     }
 }

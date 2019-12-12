@@ -325,6 +325,20 @@ public class BookDTO implements Serializable {
     public void setDescuento(Integer descuento) {
         this.descuento = descuento;
     }
+    
+     /**
+     * @return the sumaTotal
+     */
+    public Integer getSumaTotal() {
+        return sumaTotal;
+    }
+
+    /**
+     * @param sumaTotal the sumaTotal to set
+     */
+    public void setSumaTotal(Integer sumaTotal) {
+        this.sumaTotal = sumaTotal;
+    }
 
     /**
      * @return the categoria
@@ -338,20 +352,6 @@ public class BookDTO implements Serializable {
      */
     public void setCategoria(Integer categoria) {
         this.categoria = categoria;
-    }
-
-    /**
-     * @return the sumaTotal
-     */
-    public Integer getSumaTotal() {
-        return sumaTotal;
-    }
-
-    /**
-     * @param sumaTotal the sumaTotal to set
-     */
-    public void setSumaTotal(Integer sumaTotal) {
-        this.sumaTotal = sumaTotal;
     }
 
     /**
