@@ -9,8 +9,10 @@
     <class>co.edu.uniandes.csw.bookstore.entities.AuthorEntity</class>
     <class>co.edu.uniandes.csw.bookstore.entities.PrizeEntity</class>
     <class>co.edu.uniandes.csw.bookstore.entities.OrganizationEntity</class>
+    <class>co.edu.uniandes.csw.bookstore.entities.CompraEntity</class>
+    <class>co.edu.uniandes.csw.bookstore.entities.UsuarioEntity</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
- <shared-cache-mode>NONE</shared-cache-mode>
+    <shared-cache-mode>NONE</shared-cache-mode>
     <properties>
       <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
       <property name="eclipselink.target-database" value="Derby"/>
