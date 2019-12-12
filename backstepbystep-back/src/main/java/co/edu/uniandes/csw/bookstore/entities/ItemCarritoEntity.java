@@ -6,8 +6,9 @@
 package co.edu.uniandes.csw.bookstore.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -20,8 +21,8 @@ public class ItemCarritoEntity extends BaseEntity implements Serializable {
     private Integer cantidad;
 
     @PodamExclude
-    @OneToOne
-    private OrganizationEntity book;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private BookEntity book;
 
     /**
      * @return the cantidad
@@ -40,14 +41,14 @@ public class ItemCarritoEntity extends BaseEntity implements Serializable {
     /**
      * @return the book
      */
-    public OrganizationEntity getBook() {
+    public BookEntity getBook() {
         return book;
     }
 
     /**
      * @param book the book to set
      */
-    public void setBook(OrganizationEntity book) {
+    public void setBook(BookEntity book) {
         this.book = book;
     }
 }

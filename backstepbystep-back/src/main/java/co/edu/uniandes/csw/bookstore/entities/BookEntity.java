@@ -57,11 +57,15 @@ public class BookEntity extends BaseEntity implements Serializable {
 
     @PodamExclude
     @OneToMany(mappedBy = "book", cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<ReviewEntity> reviews = new ArrayList<ReviewEntity>();
+    private List<ReviewEntity> reviews = new ArrayList<>();
 
     @PodamExclude
     @ManyToMany
-    private List<AuthorEntity> authors = new ArrayList<AuthorEntity>();
+    private List<AuthorEntity> authors = new ArrayList<>();
+
+    @PodamExclude
+    @OneToMany(mappedBy = "book", cascade = CascadeType.PERSIST)
+    private List<ItemCarritoEntity> item = new ArrayList<>();
 
     private Integer descuento;
 
@@ -70,8 +74,7 @@ public class BookEntity extends BaseEntity implements Serializable {
     private Integer categoria;
     private Integer sumaTotal;
     private Integer cantidadVendido;
-    
-    
+
     /**
      * Devuelve el nombre del libro.
      *
@@ -298,5 +301,19 @@ public class BookEntity extends BaseEntity implements Serializable {
      */
     public void setCantidadVendido(Integer cantidadVendido) {
         this.cantidadVendido = cantidadVendido;
+    }
+
+    /**
+     * @return the item
+     */
+    public List<ItemCarritoEntity> getItem() {
+        return item;
+    }
+
+    /**
+     * @param item the item to set
+     */
+    public void setItem(List<ItemCarritoEntity> item) {
+        this.item = item;
     }
 }
