@@ -27,6 +27,7 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -46,6 +47,11 @@ public class ReviewEntity extends BaseEntity implements Serializable {
     private BookEntity book;
     
     private Integer calificacion;
+    @PodamExclude
+    @OneToOne
+    private UsuarioEntity usuario; 
+    
+    
 
     /**
      * Devuelve el nombre de la reseña.
@@ -132,5 +138,19 @@ public class ReviewEntity extends BaseEntity implements Serializable {
      */
     public void setCalificacion(Integer calificacion) {
         this.calificacion = calificacion;
+    }
+
+    /**
+     * @return the usuario
+     */
+    public UsuarioEntity getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
     }
 }

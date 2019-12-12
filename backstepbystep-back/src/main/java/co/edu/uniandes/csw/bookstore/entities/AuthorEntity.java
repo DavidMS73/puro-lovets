@@ -56,6 +56,7 @@ public class AuthorEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "author",fetch=FetchType.LAZY)
     private List<PrizeEntity> prizes = new ArrayList<>();
+    
 
     private String name;
     private String description;

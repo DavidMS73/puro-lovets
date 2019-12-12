@@ -24,6 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.bookstore.dtos;
 
 import co.edu.uniandes.csw.bookstore.entities.ReviewEntity;
+import co.edu.uniandes.csw.bookstore.entities.UsuarioEntity;
 import java.io.Serializable;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -78,6 +79,7 @@ public class ReviewDTO implements Serializable {
     private String source;
     private String description;
     private Integer calificacion;
+    private UsuarioDTO usuario; 
     
     
     /*
@@ -104,10 +106,17 @@ public class ReviewDTO implements Serializable {
             this.source = reviewEntity.getSource();
             this.description = reviewEntity.getDescription();
             this.calificacion = reviewEntity.getCalificacion();
+            
             if (reviewEntity.getBook() != null) {
                 this.book = new BookDTO(reviewEntity.getBook());
             } else {
                 this.book = null;
+            }
+            if (reviewEntity.getUsuario() != null) {
+                this.usuario = new UsuarioDTO(reviewEntity.getUsuario());
+                
+            } else {
+                this.usuario = null;
             }
         }
     }
@@ -126,6 +135,10 @@ public class ReviewDTO implements Serializable {
         reviewEntity.setCalificacion(this.calificacion);
         if (this.book != null) {
             reviewEntity.setBook(this.book.toEntity());
+        }
+        if (this.usuario != null)
+        {
+            reviewEntity.setUsuario(this.usuario.toEntity());
         }
         return reviewEntity;
     }
@@ -238,4 +251,20 @@ public class ReviewDTO implements Serializable {
     public void setCalificacion(Integer calificacion) {
         this.calificacion = calificacion;
     }
+
+    /**
+     * @return the usuario
+     */
+    public UsuarioDTO getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(UsuarioDTO usuario) {
+        this.usuario = usuario;
+    }
+    
+   
 }
