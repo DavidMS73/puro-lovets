@@ -79,7 +79,7 @@ public class UsuarioResource {
     }
     
     @GET
-    @Path("{usuariosUsername: \\d+}")
+    @Path("{usuariosUsername: [a-zA-Z][a-zA-Z]*}")
     public UsuarioDetailDTO getUsuarioUsername(@PathParam("usuariosUsername") String usuariosUsername) {
         LOGGER.log(Level.INFO, "UsuarioResource getUsuarioUsername: input: {0}", usuariosUsername);
         UsuarioEntity usuarioEntity = uLogic.getUsuarioUsername(usuariosUsername);
