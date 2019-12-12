@@ -6,12 +6,13 @@
 package co.edu.uniandes.csw.bookstore.dtos;
 
 import co.edu.uniandes.csw.bookstore.entities.UsuarioEntity;
+import java.io.Serializable;
 
 /**
  * UsuarioDTO Objeto de transferencia de datos de Usuarios
  * @author puro-lovets
  */
-public class UsuarioDTO {
+public class UsuarioDTO implements Serializable {
     /**
      * Atributo que modela el nombre del usuario
      */
@@ -50,6 +51,15 @@ public class UsuarioDTO {
      */
     public UsuarioDTO() {
         //Constructor
+    }
+    
+    public UsuarioEntity toEntity() {
+        UsuarioEntity usuario = new UsuarioEntity();
+        usuario.setId(this.getId());
+        usuario.setContrasena(this.getContrasena());
+        usuario.setNombre(this.getNombre());
+        usuario.setUsername(this.getUsername());
+        return usuario;
     }
     
     /**
