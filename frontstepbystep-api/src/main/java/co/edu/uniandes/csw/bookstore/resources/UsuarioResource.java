@@ -78,19 +78,6 @@ public class UsuarioResource {
         return detailDTO;
     }
     
-    @GET
-    @Path("{usuariosUsername: [a-zA-Z][a-zA-Z]*}")
-    public UsuarioDetailDTO getUsuarioUsername(@PathParam("usuariosUsername") String usuariosUsername) {
-        LOGGER.log(Level.INFO, "UsuarioResource getUsuarioUsername: input: {0}", usuariosUsername);
-        UsuarioEntity usuarioEntity = uLogic.getUsuarioUsername(usuariosUsername);
-        if (usuarioEntity == null) {
-            throw new WebApplicationException(msg1 + usuariosUsername + msg2, 404);
-        }
-        UsuarioDetailDTO detailDTO = new UsuarioDetailDTO(usuarioEntity);
-        LOGGER.log(Level.INFO, "UsuarioResource getUsuarioUsername: output: {0}", detailDTO);
-        return detailDTO;
-    }
-    
     private List<UsuarioDetailDTO> listEntity2DTO(List<UsuarioEntity> entityList) {
         List<UsuarioDetailDTO> list = new ArrayList<>();
         for (UsuarioEntity entity : entityList) {

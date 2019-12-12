@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.bookstore.ejb;
 import co.edu.uniandes.csw.bookstore.entities.CompraEntity;
 import co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.bookstore.persistence.CompraPersistence;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Inject;
@@ -23,7 +24,7 @@ public class CompraLogic {
     @Inject
     private CompraPersistence persistence;
     
-    public CompraEntity createBook(CompraEntity compraEntity) throws BusinessLogicException {
+    public CompraEntity createCompra(CompraEntity compraEntity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de creación de la compra");
         if (compraEntity.getEstado()== null) {
             throw new BusinessLogicException("La compra es inválida");
@@ -31,5 +32,29 @@ public class CompraLogic {
         persistence.create(compraEntity);
         LOGGER.log(Level.INFO, "Termina proceso de creación de la compra");
         return compraEntity;
+    }
+    
+    public List<CompraEntity> getCompras() {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar todas las compras");
+        List<CompraEntity> compras = persistence.findAll();
+        LOGGER.log(Level.INFO, "Termina proceso de consultar todas las compras");
+        return compras;
+    }
+    
+    public CompraEntity getCompra(Long booksId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar la compra con id = {0}", booksId);
+        CompraEntity compraEntity = persistence.find(booksId);
+        if (compraEntity == null) {
+            LOGGER.log(Level.SEVERE, "La compra con el id = {0} no existe", booksId);
+        }
+        LOGGER.log(Level.INFO, "Termina proceso de consultar la compra con id = {0}", booksId);
+        return compraEntity;
+    }
+    
+    public CompraEntity updateCompra(Long comprasId, CompraEntity compraEntity) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar la compra con id = {0}", comprasId);
+        CompraEntity newEntity = persistence.update(compraEntity);
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar la compra con id = {0}", compraEntity.getId());
+        return newEntity;
     }
 }
