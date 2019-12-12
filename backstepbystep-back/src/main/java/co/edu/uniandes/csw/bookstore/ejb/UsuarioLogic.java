@@ -11,12 +11,14 @@ import co.edu.uniandes.csw.bookstore.persistence.UsuarioPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
  * Clase que implementa la conexión con la persistencia para la entidad de Usuario
  * @author puro-lovets
  */
+@Stateless
 public class UsuarioLogic {
     
     private static final Logger LOGGER = Logger.getLogger(UsuarioLogic.class.getName());
