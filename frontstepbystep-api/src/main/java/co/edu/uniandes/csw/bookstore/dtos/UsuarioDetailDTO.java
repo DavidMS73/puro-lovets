@@ -5,7 +5,10 @@
  */
 package co.edu.uniandes.csw.bookstore.dtos;
 
+import co.edu.uniandes.csw.bookstore.entities.UsuarioEntity;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -19,6 +22,16 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable {
      */
     public UsuarioDetailDTO() {
         super();
+    }
+    
+    public UsuarioDetailDTO(UsuarioEntity usuarioEntity) {
+        super(usuarioEntity);
+    }
+    
+    @Override
+    public UsuarioEntity toEntity() {
+        UsuarioEntity usuarioEntity = super.toEntity();
+        return usuarioEntity;
     }
     
     @Override
