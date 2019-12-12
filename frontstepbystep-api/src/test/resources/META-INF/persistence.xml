@@ -11,6 +11,7 @@
     <class>co.edu.uniandes.csw.bookstore.entities.OrganizationEntity</class>
     <class>co.edu.uniandes.csw.bookstore.entities.CompraEntity</class>
     <class>co.edu.uniandes.csw.bookstore.entities.UsuarioEntity</class>
+    <class>co.edu.uniandes.csw.bookstore.entities.ItemCarritoEntity</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
     <properties>
