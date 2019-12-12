@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.bookstore.dtos;
 
 import co.edu.uniandes.csw.bookstore.entities.UsuarioEntity;
 import java.io.Serializable;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * UsuarioDTO Objeto de transferencia de datos de Usuarios
@@ -116,5 +118,10 @@ public class UsuarioDTO implements Serializable {
      */
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
 }
