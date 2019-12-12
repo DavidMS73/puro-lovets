@@ -63,6 +63,15 @@ public class BookEntity extends BaseEntity implements Serializable {
     @ManyToMany
     private List<AuthorEntity> authors = new ArrayList<AuthorEntity>();
 
+    private Integer descuento;
+
+    private Integer calificacion;
+    private Integer precio;
+    private Integer categoria;
+    private Integer sumaTotal;
+    private Integer cantidadVendido;
+    
+    
     /**
      * Devuelve el nombre del libro.
      *
@@ -205,5 +214,89 @@ public class BookEntity extends BaseEntity implements Serializable {
      */
     public void setAuthors(List<AuthorEntity> authors) {
         this.authors = authors;
+    }
+
+    /**
+     * @return the descuento
+     */
+    public Integer getDescuento() {
+        return descuento;
+    }
+
+    /**
+     * @param descuento the descuento to set
+     */
+    public void setDescuento(Integer descuento) {
+        this.descuento = descuento;
+    }
+
+    /**
+     * @return the calificacion
+     */
+    public Integer getCalificacion() {
+        return calificacion;
+    }
+
+    /**
+     * @param calificacion the calificacion to set
+     */
+    public void setCalificacion(Integer calificacion) {
+        this.calificacion = calificacion;
+    }
+
+    /**
+     * @return the precio
+     */
+    public Integer getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(Integer precio) {
+        this.precio = precio;
+    }
+
+    /**
+     * @return the categoria
+     */
+    public Integer getCategoria() {
+        return categoria;
+    }
+
+    /**
+     * @param categoria the categoria to set
+     */
+    public void setCategoria(Integer categoria) {
+        this.categoria = categoria;
+    }
+
+    /**
+     * @return the sumaTotal
+     */
+    public Integer getSumaTotal() {
+        return sumaTotal;
+    }
+
+    /**
+     * @param sumaTotal the sumaTotal to set
+     */
+    public void setSumaTotal(Integer sumaTotal) {
+        this.sumaTotal = sumaTotal;
+    }
+
+    /**
+     * @return the cantidadVendido
+     */
+    public Integer getCantidadVendido() {
+        return cantidadVendido;
+    }
+
+    /**
+     * @param cantidadVendido the cantidadVendido to set
+     */
+    public void setCantidadVendido(Integer cantidadVendido) {
+        this.cantidadVendido = cantidadVendido;
     }
 }

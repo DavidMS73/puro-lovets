@@ -44,6 +44,8 @@ public class ReviewEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @ManyToOne(cascade = CascadeType.PERSIST)
     private BookEntity book;
+    
+    private Integer calificacion;
 
     /**
      * Devuelve el nombre de la reseña.
@@ -98,6 +100,7 @@ public class ReviewEntity extends BaseEntity implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+    
 
     /**
      * Devuelve el libro asociado a esta reseña
@@ -115,5 +118,19 @@ public class ReviewEntity extends BaseEntity implements Serializable {
      */
     public void setBook(BookEntity bookEntity) {
         this.book = bookEntity;
+    }
+
+    /**
+     * @return the calificacion
+     */
+    public Integer getCalificacion() {
+        return calificacion;
+    }
+
+    /**
+     * @param calificacion the calificacion to set
+     */
+    public void setCalificacion(Integer calificacion) {
+        this.calificacion = calificacion;
     }
 }

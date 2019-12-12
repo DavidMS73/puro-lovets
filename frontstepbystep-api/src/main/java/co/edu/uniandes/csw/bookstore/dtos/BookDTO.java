@@ -84,6 +84,16 @@ public class BookDTO implements Serializable {
     * dado que esta tiene cardinalidad 1.
      */
     private EditorialDTO editorial;
+    private Integer precio;
+    private Integer calificacion;
+    private Integer descuento;
+    private Integer categoria;
+    private Integer sumaTotal;
+    private Integer cantidadVendido;
+    
+    
+   
+    
 
     /**
      * Constructor por defecto
@@ -104,6 +114,12 @@ public class BookDTO implements Serializable {
             this.image = bookEntity.getImage();
             this.description = bookEntity.getDescription();
             this.publishingdate = bookEntity.getPublishDate();
+            this.precio = bookEntity.getPrecio();
+            this.calificacion = bookEntity.getCalificacion();
+            this.descuento = bookEntity.getDescuento();
+            this.categoria = bookEntity.getCategoria();
+            this.sumaTotal = bookEntity.getSumaTotal();
+            this.cantidadVendido = bookEntity.getCantidadVendido();
             if (bookEntity.getEditorial() != null) {
                 this.editorial = new EditorialDTO(bookEntity.getEditorial());
             } else {
@@ -125,6 +141,12 @@ public class BookDTO implements Serializable {
         bookEntity.setImage(this.image);
         bookEntity.setDescription(this.description);
         bookEntity.setPublishDate(this.publishingdate);
+        bookEntity.setCalificacion(this.calificacion);
+        bookEntity.setDescuento(this.descuento);
+        bookEntity.setPrecio(this.precio);
+        bookEntity.setCategoria(this.categoria);
+        bookEntity.setSumaTotal(this.sumaTotal);
+        bookEntity.setCantidadVendido(this.cantidadVendido);
         if (this.editorial != null) {
             bookEntity.setEditorial(this.editorial.toEntity());
         }
@@ -260,5 +282,89 @@ public class BookDTO implements Serializable {
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+    }
+
+    /**
+     * @return the precio
+     */
+    public Integer getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(Integer precio) {
+        this.precio = precio;
+    }
+
+    /**
+     * @return the calificacion
+     */
+    public Integer getCalificacion() {
+        return calificacion;
+    }
+
+    /**
+     * @param calificacion the calificacion to set
+     */
+    public void setCalificacion(Integer calificacion) {
+        this.calificacion = calificacion;
+    }
+
+    /**
+     * @return the descuento
+     */
+    public Integer getDescuento() {
+        return descuento;
+    }
+
+    /**
+     * @param descuento the descuento to set
+     */
+    public void setDescuento(Integer descuento) {
+        this.descuento = descuento;
+    }
+
+    /**
+     * @return the categoria
+     */
+    public Integer getCategoria() {
+        return categoria;
+    }
+
+    /**
+     * @param categoria the categoria to set
+     */
+    public void setCategoria(Integer categoria) {
+        this.categoria = categoria;
+    }
+
+    /**
+     * @return the sumaTotal
+     */
+    public Integer getSumaTotal() {
+        return sumaTotal;
+    }
+
+    /**
+     * @param sumaTotal the sumaTotal to set
+     */
+    public void setSumaTotal(Integer sumaTotal) {
+        this.sumaTotal = sumaTotal;
+    }
+
+    /**
+     * @return the cantidadVendido
+     */
+    public Integer getCantidadVendido() {
+        return cantidadVendido;
+    }
+
+    /**
+     * @param cantidadVendido the cantidadVendido to set
+     */
+    public void setCantidadVendido(Integer cantidadVendido) {
+        this.cantidadVendido = cantidadVendido;
     }
 }

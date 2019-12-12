@@ -77,7 +77,9 @@ public class ReviewDTO implements Serializable {
     private String name;
     private String source;
     private String description;
-
+    private Integer calificacion;
+    
+    
     /*
     * Relación a un book
     * dado que esta tiene cardinalidad 1.
@@ -101,6 +103,7 @@ public class ReviewDTO implements Serializable {
             this.name = reviewEntity.getName();
             this.source = reviewEntity.getSource();
             this.description = reviewEntity.getDescription();
+            this.calificacion = reviewEntity.getCalificacion();
             if (reviewEntity.getBook() != null) {
                 this.book = new BookDTO(reviewEntity.getBook());
             } else {
@@ -120,6 +123,7 @@ public class ReviewDTO implements Serializable {
         reviewEntity.setName(this.name);
         reviewEntity.setSource(this.source);
         reviewEntity.setDescription(this.description);
+        reviewEntity.setCalificacion(this.calificacion);
         if (this.book != null) {
             reviewEntity.setBook(this.book.toEntity());
         }
@@ -219,5 +223,19 @@ public class ReviewDTO implements Serializable {
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+    }
+
+    /**
+     * @return the calificacion
+     */
+    public Integer getCalificacion() {
+        return calificacion;
+    }
+
+    /**
+     * @param calificacion the calificacion to set
+     */
+    public void setCalificacion(Integer calificacion) {
+        this.calificacion = calificacion;
     }
 }
